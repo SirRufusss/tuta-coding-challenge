@@ -1,42 +1,45 @@
 footer {
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 100%;
     justify-content: center;
     align-items: center;
     background-color: #f2f2f2;
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
-    bottom: 0px;
-    background-color: #f2f2f2;
+    bottom: 0;
     text-align: center;
-    height: 100px;
-}
-
-footer span a {
+    height: 8vh;
+    min-height: 50px;
+  }
+  
+  footer span a {
     color: black;
     text-decoration: none;
-}
-
-footer a {
+  }
+  
+  footer a {
     text-decoration: none;
     color: black;
-}
-
-.github-link {
+  }
+  
+  .github-link {
     color: #1E88E5;
-}
-
-.github-icon {
+  }
+  
+  .github-icon {
     width: 20px;
     height: 20px;
     vertical-align: middle;
     margin-left: 5px;
     color: black;
-}
-
-
+  }
+  
+  @media (max-width: 768px) {
+    footer {
+      height: auto;
+      padding: 10px 0;
+    }
+  
+    .github-icon {
+      display: none;
+    }
+  }
