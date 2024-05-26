@@ -17,38 +17,48 @@
         >
         <p>{{ validationMessage }}</p>
         <button (click)="checkUrl()" [disabled]="validationMessage" class="scan-button">SCAN</button>
+        <br>
+        <br>
         <p>{{ message }}</p>
 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
-        <h1>Hallo Tuta-Team!</h1>
-
-        <p>
-            <br>
-
-            vielen Dank für die wirklich schöne Coding-Challenge. <br>
-            Zum testen bitte ich euch diese 3 URL's zu checken: <br>
-            <br>
-
-            <div class="url-row">
-                <p class="url">https://example.com</p>
-                <button class="copy-btn" (click)="copyContent('https://example.com')">Copy</button>
-              </div>
-              <br>
-              <div class="url-row">
-                <p class="url">https://example.com/folder</p>
-                <button class="copy-btn" (click)="copyContent('https://example.com/folder')">Copy</button>
-              </div>
-              <br>
-              <div class="url-row">
-                <p class="url">https://example.com/file</p>
-                <button class="copy-btn" (click)="copyContent('https://example.com/file')">Copy</button>
-              </div>
-
-
+        <div class="info-box">
+          <h1>Hallo Tuta-Team!</h1>
+          <br>
+          <br>
+          vielen Dank für die wirklich schöne Coding-Challenge. <br>
+          Weil ich Github genutzt habe könnt Ihr bestens beobachten wie ich diese Aufgabe angegangen bin. <br>
+          Github Link findet Ihr im Footer (einfach anklicken) <br>
+          <br>
+          <br>
+          <p class="underline">
+            Zum Testen bitte ich euch diese 3 URLs zu checken: <br>
+          </p> 
+          <br>
+          <div class="url-row">
+            <span class="number" style="color: #850022;">1.</span>
+            <p class="url">https://example.com</p>
+            <button class="copy-btn" (click)="copyContent('https://example.com')">copy to clipboard</button>
+          </div>
+          <br>
+          <div class="url-row">
+            <span class="number" style="color: #850022;">2.</span>
+            <p class="url">https://example.com/folder</p>
+            <button class="copy-btn" (click)="copyContent('https://example.com/folder')">copy to clipboard</button>
+          </div>
+          <br>
+          <div class="url-row">
+            <span class="number" style="color: #850022;">3.</span>
+            <p class="url">https://example.com/file</p>
+            <button class="copy-btn" (click)="copyContent('https://example.com/file')">copy to clipboard</button>
+          </div>
+        </div>
       </section>
     </main>
-
 </div>
-
-
 

@@ -121,16 +121,56 @@ body {
       font-size: 14px;
     }
   }
-
+  
   .url-row {
     display: flex;
-    align-items: center;
+  }
+  
+  .url-row .number,
+  .url-row .url,
+  .url-row .copy-btn {
+    display: inline-flex;
+    height: 30px;
+  }
+  
+  .url-row .number {
+    margin-right: 5px;
+    font-family: 'VT323', monospace;
+    color: #850022;
   }
   
   .url-row .url {
     margin-right: 10px;
+    font-family: 'VT323', monospace;
   }
   
   .url-row .copy-btn {
     margin-left: auto;
+    background-color: #850022;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
   }
+  
+  .url-row .copy-btn:hover {
+    background-color: #b30030;
+  }
+  
+  .info-box {
+    border: 1px solid #b30030;
+    padding: 20px;
+    background-color: #161625;
+    font-family: 'VT323', monospace;
+    color: #fff;
+  }
+
+  .underline {
+    text-decoration: underline;
+    text-decoration-color: #fff; 
+    text-decoration-thickness: 2px; 
+  }
+  
