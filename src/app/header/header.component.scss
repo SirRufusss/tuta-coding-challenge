@@ -1,0 +1,21 @@
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.header-content {
+    display: flex;
+    align-items: center;
+}
+  
+.logo {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Add some spacing between the logo and the title */
+}
