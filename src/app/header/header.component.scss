@@ -3,12 +3,13 @@ header {
     box-sizing: border-box;
     padding: 20px;
     background-color: #f2f2f2;
-    color: black;
+    color: #850022;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 12vh;
     min-height: 60px;
+    font-family: 'VT323', monospace;
   }
   
   .header-content {

@@ -66,7 +66,7 @@ export class UrlCheckerComponent {
         if (!response.exists) {
           this.message = 'URL existiert nicht';
         } else if (response.type === null) {
-          this.message = 'URL existiert, ABER zeigt nicht auf einen Ornder oder eine Datei';
+          this.message = 'URL existiert, ABER zeigt nicht auf einen Order oder eine Datei';
         } else {
           this.message = `URL existiert und zeigt auf ${response.type}.`;
         }

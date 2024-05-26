@@ -1,8 +1,8 @@
 <div class="general main">  
     <div class="infotext">
       <img src="/assets/images/web-weiß.png" alt="">
-  
     </div>
+    <br>
     <p>
       Analysiere verdächtige URLs, um dich vor böswilligen Cyberangriffen zu schützen
     </p>
@@ -19,7 +19,7 @@
         <button (click)="checkUrl()" [disabled]="validationMessage" class="scan-button">SCAN</button>
         <br>
         <br>
-        <p>{{ message }}</p>
+        <p class="output">{{ message }}</p>
 
         <br>
         <br>
@@ -31,7 +31,7 @@
           <h1>Hallo Tuta-Team!</h1>
           <br>
           <br>
-          vielen Dank für die wirklich schöne Coding-Challenge. <br>
+          Vielen Dank für die wirklich schöne Coding-Challenge. <br>
           Weil ich Github genutzt habe könnt Ihr bestens beobachten wie ich diese Aufgabe angegangen bin. <br>
           Github Link findet Ihr im Footer (einfach anklicken) <br>
           <br>
@@ -43,19 +43,19 @@
           <div class="url-row">
             <span class="number" style="color: #850022;">1.</span>
             <p class="url">https://example.com</p>
-            <button class="copy-btn" (click)="copyContent('https://example.com')">copy to clipboard</button>
+            <button class="copy-btn" (click)="copyContent('https://example.com')">copy</button>
           </div>
           <br>
           <div class="url-row">
             <span class="number" style="color: #850022;">2.</span>
             <p class="url">https://example.com/folder</p>
-            <button class="copy-btn" (click)="copyContent('https://example.com/folder')">copy to clipboard</button>
+            <button class="copy-btn" (click)="copyContent('https://example.com/folder')">copy</button>
           </div>
           <br>
           <div class="url-row">
             <span class="number" style="color: #850022;">3.</span>
             <p class="url">https://example.com/file</p>
-            <button class="copy-btn" (click)="copyContent('https://example.com/file')">copy to clipboard</button>
+            <button class="copy-btn" (click)="copyContent('https://example.com/file')">copy</button>
           </div>
         </div>
       </section>
