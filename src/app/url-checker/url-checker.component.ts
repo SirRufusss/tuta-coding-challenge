@@ -76,18 +76,6 @@ export class UrlCheckerComponent {
     }, 1000);  // Throttling time set to 1 second
   }
 
-  // Copy text to clipboard
-  copyToClipboard(text: string): void {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        console.log('Text copied to clipboard');
-        alert('URL copied to clipboard!');
-      })
-      .catch(err => {
-        console.error('Failed to copy text: ', err);
-      });
-  }
-
   copyContent(text: string): void {
     const content1 = document.createElement('textarea');
     content1.style.position = 'fixed';
