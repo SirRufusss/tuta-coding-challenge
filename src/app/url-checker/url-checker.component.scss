@@ -121,3 +121,16 @@ body {
       font-size: 14px;
     }
   }
+
+  .url-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .url-row .url {
+    margin-right: 10px;
+  }
+  
+  .url-row .copy-btn {
+    margin-left: auto;
+  }

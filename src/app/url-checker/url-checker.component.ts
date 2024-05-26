@@ -14,6 +14,7 @@ export class UrlCheckerComponent {
   validationMessage: string = '';
   message: string = '';
   timeoutId: any;
+  htmlToAdd = "Test Clipboard"
 
   // Validate URL format on input change
   validateUrl(): void {
@@ -73,5 +74,31 @@ export class UrlCheckerComponent {
         this.message = 'ERROR (Fehler beim prüfen der URL).';
       }
     }, 1000);  // Throttling time set to 1 second
+  }
+
+  // Copy text to clipboard
+  copyToClipboard(text: string): void {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log('Text copied to clipboard');
+        alert('URL copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+  }
+
+  copyContent(text: string): void {
+    const content1 = document.createElement('textarea');
+    content1.style.position = 'fixed';
+    content1.style.left = '0';
+    content1.style.top = '0';
+    content1.style.opacity = '0';
+    content1.value = text;
+    document.body.appendChild(content1);
+    content1.focus();
+    content1.select();
+    document.execCommand('copy');
+    document.body.removeChild(content1);
   }
 }
