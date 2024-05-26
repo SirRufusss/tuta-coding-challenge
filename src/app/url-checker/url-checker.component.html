@@ -1,4 +1,4 @@
-<body class="general">  
+<div class="general">  
     <div class="infotext">
       <img src="/assets/images/web-weiß.png" alt="">
   
@@ -8,8 +8,18 @@
     </p>
     <main>
       <section class="url-input">
-        <input type="text" placeholder="Prüfe deine URL" class="input-field">
-        <button class="scan-button">SCAN</button>
+        <input 
+        type="text" 
+        placeholder="Prüfe deine URL" 
+        class="input-field"
+        [(ngModel)]="url"
+        (ngModelChange)="validateUrl()"
+        >
+        <p>{{ validationMessage }}</p>
+        <button (click)="checkUrl()" [disabled]="validationMessage" class="scan-button">SCAN</button>
+        <p>{{ message }}</p>
       </section>
     </main>
-</body>
+</div>
+
+
