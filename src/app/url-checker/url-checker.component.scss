@@ -1,65 +1,71 @@
-#logo {
-    width: 150px;
-    height: 150px;
-    }
 
-.general {
+  body {
     display: flex;
+    flex-direction: column;
+  }
+  
+  .general {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #161625;
     color: white;
-}
-
-body {
-    margin: 0;
-    font-family: sans-serif;
-}
-
-.logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.title {
-    margin: 0;
-}
-
-main {
     padding: 40px;
-}
-
-.url-input {
+  }
+  
+  #logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+  
+  main {
+    width: 100%;
+    flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+  
+  .url-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 30px;
-}
-
-.input-field {
+  }
+  
+  .input-field {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 300px;
-    margin-right: 10px;
+    margin-bottom: 10px;
     background-color: transparent;
     border-bottom: 1px solid #fff;
     color: #fff;
     padding: 5px 0;
-}
-
-.input-field:focus {
+  }
+  
+  .input-field:focus {
     outline: none;
     border-color: #850022;
-}
-
-.input-field::placeholder {
+  }
+  
+  .input-field::placeholder {
     color: #fff;
     opacity: 0.7;
-}
-
-.scan-button {
+  }
+  
+  .scan-button {
     background-color: #850022;
     color: #fff;
     border: none;
@@ -67,22 +73,18 @@ main {
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
-}
-      
-.logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    }
-      
-.title {
-    margin: 0;
-}
+  }
 
-.infotext {
-    padding-top: 100px;
+  :host {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-    
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  app-url-checker {
+    flex: 1;
+  }
+  
+  app-footer {
+    flex-shrink: 0;
+  }

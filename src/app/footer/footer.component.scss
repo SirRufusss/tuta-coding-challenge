@@ -1,6 +1,5 @@
 footer {
     width: 100vw;
-    position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
@@ -8,15 +7,14 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: #f2f2f2;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     bottom: 0px;
     background-color: #f2f2f2;
-    padding: 20px;
     text-align: center;
+    height: 100px;
 }
 
 footer span a {
@@ -40,3 +38,5 @@ footer a {
     margin-left: 5px;
     color: black;
 }
+
+
