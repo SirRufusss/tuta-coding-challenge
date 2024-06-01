@@ -55,6 +55,8 @@ export class UrlCheckerComponent {
       return;
     }
 
+    const urlToCheck = this.url;
+
     this.message = 'Prüfe URL...';
 
     if (this.timeoutId) {
@@ -63,18 +65,23 @@ export class UrlCheckerComponent {
 
     this.timeoutId = setTimeout(async () => {
       try {
-        const response = await this.checkUrlExists(this.url);
+        //const response = await this.checkUrlExists(this.url);
+        const response = await this.checkUrlExists(urlToCheck);
         if (!response.exists) {
           this.message = 'URL existiert nicht';
+          console.log(this.message)
         } else if (response.type === null) {
           this.message = 'URL existiert, ABER zeigt nicht auf einen Order oder eine Datei';
+          console.log(this.message)
         } else {
           this.message = `URL existiert und zeigt auf ${response.type}.`;
+          console.log(this.message)
         }
       } catch (error) {
         this.message = 'ERROR (Fehler beim prüfen der URL).';
+        console.log(this.message)
       }
-    }, 1000);  // Throttling time set to 1 second
+    }, 3000);  // Throttling time set to 1 second
   }
 
   copyContent(text: string): void {
