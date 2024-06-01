@@ -23,6 +23,7 @@ export class UrlCheckerComponent {
       this.validationMessage = 'Kein gültiges URL Format';
     } else {
       this.validationMessage = '';
+      this.checkUrl();
     }
   }
 
@@ -78,10 +79,6 @@ export class UrlCheckerComponent {
 
   copyContent(text: string): void {
     const content1 = document.createElement('textarea');
-    content1.style.position = 'fixed';
-    content1.style.left = '0';
-    content1.style.top = '0';
-    content1.style.opacity = '0';
     content1.value = text;
     document.body.appendChild(content1);
     content1.focus();
