@@ -1,36 +1,58 @@
 import { Component } from '@angular/core';
 import { mockData } from '../mock-data/mock-data';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { catchError, debounceTime, distinctUntilChanged, of, switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-url-checker',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './url-checker.component.html',
   styleUrl: './url-checker.component.scss'
 })
 export class UrlCheckerComponent {
-  url: string = '';
+  urlControl = new FormControl('');
   validationMessage: string = '';
   message: string = '';
-  timeoutId: any;
-  htmlToAdd = "Test Clipboard"
+  htmlToAdd = "Test Clipboard";
 
-  // Validate URL format on input change
-  validateUrl(): void {
-    this.message = '';
-    if (!this.isValidUrl(this.url)) {
-      this.validationMessage = 'Kein gültiges URL Format';
-    } else {
-      this.validationMessage = '';
-      this.checkUrl();
-    }
+  constructor() {
+    this.urlControl.valueChanges.pipe(
+      debounceTime(300),  // Wait for the user to stop typing for 300ms
+      distinctUntilChanged(),  // Only proceed if the value has changed
+      switchMap(url => {
+        this.message = 'Prüfe URL...';
+        if (this.isValidUrl(url)) {
+          this.validationMessage = '';
+          return this.checkUrlExists(url).pipe(
+            catchError(() => {
+              this.message = 'ERROR (Fehler beim prüfen der URL).';
+              return of(null);
+            })
+          );
+        } else {
+          this.validationMessage = 'Kein gültiges URL Format';
+          this.message = '';
+          return of(null);
+        }
+      })
+    ).subscribe(response => {
+      if (response) {
+        if (!response.exists) {
+          this.message = 'URL existiert nicht';
+        } else if (response.type === null) {
+          this.message = 'URL existiert, ABER zeigt nicht auf einen Order oder eine Datei';
+        } else {
+          this.message = `URL existiert und zeigt auf ${response.type}.`;
+        }
+      }
+    });
   }
 
   // Check if URL is valid
-  isValidUrl(url: string): boolean {
+  isValidUrl(url: string | null): boolean {
     try {
-      new URL(url);
+      new URL(url ? url : '');
       return true;
     } catch (_) {
       return false;
@@ -38,50 +60,14 @@ export class UrlCheckerComponent {
   }
 
   // Mock server check for URL existence
-  async checkUrlExists(url: string): Promise<{ exists: boolean, type: string | null }> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const normalizedUrl = url.toLowerCase();
+  checkUrlExists(url: string | null) {
+    return timer(5000).pipe(  // Simulate a network delay of 5 seconds
+      switchMap(() => {
+        const normalizedUrl = url ? url.toLowerCase() : '';
         const response = mockData[normalizedUrl] || { exists: false, type: null };
-        resolve(response);
-      }, 500);
-    });
-  }
-
-  // Check if URL exists on button click
-  async checkUrl(): Promise<void> {
-    if (!this.isValidUrl(this.url)) {
-      this.message = 'Invalid URL format';
-      return;
-    }
-
-    const urlToCheck = this.url;
-
-    this.message = 'Prüfe URL...';
-
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
-    }
-
-    this.timeoutId = setTimeout(async () => {
-      try {
-        //const response = await this.checkUrlExists(this.url);
-        const response = await this.checkUrlExists(urlToCheck);
-        if (!response.exists) {
-          this.message = 'URL existiert nicht';
-          console.log(this.message)
-        } else if (response.type === null) {
-          this.message = 'URL existiert, ABER zeigt nicht auf einen Order oder eine Datei';
-          console.log(this.message)
-        } else {
-          this.message = `URL existiert und zeigt auf ${response.type}.`;
-          console.log(this.message)
-        }
-      } catch (error) {
-        this.message = 'ERROR (Fehler beim prüfen der URL).';
-        console.log(this.message)
-      }
-    }, 3000);  // Throttling time set to 1 second
+        return of(response);
+      })
+    );
   }
 
   copyContent(text: string): void {
